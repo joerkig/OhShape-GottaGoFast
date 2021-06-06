@@ -13,11 +13,11 @@ namespace GottaGoFast
     {
         public override void OnLateUpdate()
         {
-            GameObject godMode = GameObject.Find("GameSetting/GodMode/GodModeToggle");
-            if (godMode != null)
+            GameObject partyToggle = GameObject.Find("ModeToggle_PARTY");
+            if (partyToggle != null)
             {
-                Toggle godModeToggle = godMode.GetComponent<Toggle>();
-                if (godModeToggle != null)
+                Toggle partyModeToggle = partyToggle.GetComponent<Toggle>();
+                if (partyModeToggle != null)
                 {
                     GameObject sliderVelocity = GameObject.Find("GameSetting/SliderVelocity/Slider");
                     if (sliderVelocity != null)
@@ -27,27 +27,27 @@ namespace GottaGoFast
                         {
                             if (slider.value < 0)
                             {
-                                godModeToggle.isOn = true;
-                                GameObject scoreMultiplier = GameObject.Find("ScoreMultiplier");
+                                partyModeToggle.isOn = true;
+                                GameObject scoreMultiplier = GameObject.Find("UI Config/SongCanvas/Content/ScoreMultiplier/ScoreMultiplier");
                                 if (scoreMultiplier != null)
                                 {
                                     Text scoreText = scoreMultiplier.GetComponent<Text>();
                                     if (scoreText != null)
                                     {
-                                        scoreText.text = "No Fail Forced By Mod";
+                                        scoreText.text = "Party Mode Forced";
                                     }
                                 }
                             }
                             else if (slider.value > 4)
                             {
-                                godModeToggle.isOn = true;
-                                GameObject scoreMultiplier = GameObject.Find("ScoreMultiplier");
+                                partyModeToggle.isOn = true;
+                                GameObject scoreMultiplier = GameObject.Find("UI Config/SongCanvas/Content/ScoreMultiplier/ScoreMultiplier");
                                 if (scoreMultiplier != null)
                                 {
                                     Text scoreText = scoreMultiplier.GetComponent<Text>();
                                     if (scoreText != null)
                                     {
-                                        scoreText.text = "No Fail Forced By Mod";
+                                        scoreText.text = "Party Mode Forced";
                                     }
                                 }
                             }
@@ -70,17 +70,17 @@ namespace GottaGoFast
                 }
                 else
                 {
-                    MelonLogger.Msg("OSWL Failed to get Component");
+                    MelonLogger.Msg("Failed to get Component");
                 }
             }
             else
             {
-                MelonLogger.Msg("OSWL Failed to find GameObject");
+                MelonLogger.Msg("Failed to find GameObject");
             }
         }
         public override void OnApplicationStart()
         {
-
+            MelonLogger.Msg("Vroom vroom");
         }
         public override void OnApplicationQuit()
         {
