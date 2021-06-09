@@ -27,7 +27,10 @@ namespace GottaGoFast
                         {
                             if (slider.value < 0)
                             {
-                                partyModeToggle.isOn = true;
+                                if (partyModeToggle.isOn == false)
+                                {
+                                    partyModeToggle.isOn = true;
+                                }
                                 GameObject scoreMultiplier = GameObject.Find("UI Config/SongCanvas/Content/ScoreMultiplier/ScoreMultiplier");
                                 if (scoreMultiplier != null)
                                 {
@@ -40,7 +43,10 @@ namespace GottaGoFast
                             }
                             else if (slider.value > 4)
                             {
-                                partyModeToggle.isOn = true;
+                                if (partyModeToggle.isOn == false)
+                                {
+                                    partyModeToggle.isOn = true;
+                                }
                                 GameObject scoreMultiplier = GameObject.Find("UI Config/SongCanvas/Content/ScoreMultiplier/ScoreMultiplier");
                                 if (scoreMultiplier != null)
                                 {
@@ -58,24 +64,27 @@ namespace GottaGoFast
         }
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            MelonLogger.Msg("OnSceneWasLoaded was called");
-            GameObject sliderVelocity = GameObject.Find("GameSetting/SliderVelocity/Slider");
-            if (sliderVelocity != null)
+            if (sceneName == "MenuScene")
             {
-                Slider slider = sliderVelocity.GetComponent<Slider>();
-                if (slider != null)
+                MelonLogger.Msg("Menu Scene loaded. Changing Velocity Slider");
+                GameObject sliderVelocity = GameObject.Find("GameSetting/SliderVelocity/Slider");
+                if (sliderVelocity != null)
                 {
-                    slider.maxValue = 12;
-                    slider.minValue = -7;
+                    Slider slider = sliderVelocity.GetComponent<Slider>();
+                    if (slider != null)
+                    {
+                        slider.maxValue = 12;
+                        slider.minValue = -7;
+                    }
+                    else
+                    {
+                        MelonLogger.Error("Failed to get Component");
+                    }
                 }
                 else
                 {
-                    MelonLogger.Msg("Failed to get Component");
+                    MelonLogger.Error("Failed to find GameObject");
                 }
-            }
-            else
-            {
-                MelonLogger.Msg("Failed to find GameObject");
             }
         }
         public override void OnApplicationStart()
