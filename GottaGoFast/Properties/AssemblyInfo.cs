@@ -7,7 +7,7 @@ using GottaGoFast;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: MelonInfo(typeof(MyMod), "GottaGoFast", "1.0.0", "joerkig")]
+[assembly: MelonInfo(typeof(MyMod), "GottaGoFast", "1.0.1", "joerkig")]
 [assembly: MelonGame("Odders", "OhShape")]
 [assembly: AssemblyTitle("GottaGoFast")]
 [assembly: AssemblyDescription("")]
